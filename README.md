@@ -228,7 +228,7 @@ configuration found here, do the following (this is somewhat tedious):
 
 ```
 export VERSION=0.1.0
-export GITHUB_TOKEN=
+export GITHUB_TOKEN=62886b1e475cf9d39c670a109e0ea29cceca9641
 export USERNAME=laibulle
 export REPO=excrement_system_rpi3
 export FILE=.nerves/artifacts/$REPO-portable-$VERSION.tar.gz
