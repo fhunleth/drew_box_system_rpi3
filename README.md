@@ -223,4 +223,23 @@ configuration found here, do the following (this is somewhat tedious):
 1. Disable IIO and UIO.
 1. Disable NXP PCA9685 PWM driver
 
+
+### Build
+
+```
+export VERSION=0.1.0
+export GITHUB_TOKEN=
+export USERNAME=laibulle
+export REPO=excrement_system_rpi3
+export FILE=.nerves/artifacts/$REPO-portable-$VERSION.tar.gz
+
+echo echo "$VERSION" > file
+mix nerves.artifact
+
+git tag -a $VERSION -m "Release description"
+git push origin --tags
+curl --data '{"tag_name": "$VERSION","target_commitish": "master","name": "$VERSION","body": "Release of version 1.0.0","draft": false,"prerelease": false}' https://api.github.com/repos/$USERNAME/$REPO/releases?access_token=$GITHUB_TOKEN
+curl -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: $(file -b --mime-type $FILE)" --data-binary @$FILE "https://uploads.github.com/repos/$USERNAME/$REPO/releases/$VERSION/assets?name=$(basename $FILE)"
+```
+
 [Image credit](#fritzing): This image is from the [Fritzing](http://fritzing.org/home/) parts library.
