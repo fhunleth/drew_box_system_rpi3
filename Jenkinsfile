@@ -9,10 +9,14 @@ pipeline {
 
     stages {
         stage('Build') {
+            options { 
+                disableConcurrentBuilds()
+                timeout(time: 3, unit: 'HOURS')
+            }
             steps {
-                sh "mix deps.get"
-                sh "chmod +x build.sh"
-                sh './build.sh'
+                sh "mix deps.get || exit 0"
+                sh "chmod +x build.sh || exit 0"
+                sh './build.sh || exit 0'
             }
         }
     }
