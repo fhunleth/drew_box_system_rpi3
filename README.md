@@ -228,7 +228,7 @@ configuration found here, do the following (this is somewhat tedious):
 
 ```/bin/bash
 mix nerves.system.shell
-make m
+make menuconfig
 make savedefconfig
 ```
 
