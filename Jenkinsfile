@@ -9,7 +9,6 @@ pipeline {
 
     stages {
         stage('Build') {
-            when { anyOf { branch 'master'; branch 'staging' } }
             steps {
                 sh 'build.sh'
             }
