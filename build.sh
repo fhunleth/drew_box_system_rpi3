@@ -7,7 +7,7 @@ mix nerves.artifact
 export FILE=$(ls .nerves/artifacts/$REPO-portable-$VERSION/*.tar.gz)
 
 # create tag
-git tag -a v$VERSION -m $MESSAGE
+git tag -a v$VERSION -m "$MESSAGE"
 git push origin --tags
 
 # create release for the tag
