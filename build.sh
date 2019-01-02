@@ -2,13 +2,21 @@
 export VERSION=$(cat VERSION)
 export MESSAGE="Release of version v$VERSION"
 
+if [[ $(git ls-remote --tags origin | grep refs/tags/v$VERSION) ]]; then
+    echo "Tag already exists v$VERSION"
+    exit
+fi
+
 # create release
 mix nerves.artifact
 export FILE=$(ls .nerves/artifacts/$REPO-portable-$VERSION/*.tar.gz)
 
 # create tag
 git tag -a v$VERSION -m "$MESSAGE"
-git push origin --tags
+
+git push origin v$VERSION
+
+
 
 # create release for the tag
 curl --data "{\"tag_name\":\"v$VERSION\",\"target_commitish\":\"master\",\"name\":\"v$VERSION\",\"body\":\"$MESSAGE\",\"draft\":false,\"prerelease\":false}" https://api.github.com/repos/$USERNAME/$REPO/releases?access_token=$GITHUB_TOKEN
