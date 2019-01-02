@@ -232,17 +232,7 @@ export GITHUB_TOKEN=62886b1e475cf9d39c670a109e0ea29cceca9641
 export USERNAME=laibulle
 export REPO=excrement_system_rpi3
 
-echo "$VERSION" > VERSION
-mix nerves.artifact
-
-export CHECKSUM=$(cat .nerves/artifacts/$REPO-portable-$VERSION/CHECKSUM)
-export FILE=$(ls .nerves/artifacts/$REPO-portable-$VERSION/*.tar.gz)
-
-git tag -a $VERSION -m "Release description"
-git push origin --tags
-curl --data "{\"tag_name\":\"$VERSION\",\"target_commitish\":\"master\",\"name\":\"$VERSION\",\"body\":\"Release of version 1.0.0\",\"draft\":false,\"prerelease\":false}" https://api.github.com/repos/$USERNAME/$REPO/releases?access_token=$GITHUB_TOKEN
-export RELEASE_ID=$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/$USERNAME/$REPO/releases/tags/$VERSION" | jq -r '.id'
-curl -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: $(file -b --mime-type $FILE)" --data-binary @$FILE "https://uploads.github.com/repos/$USERNAME/$REPO/releases/$RELEASE_ID/assets?name=$(basename $FILE)"
+./build.sh
 ```
 
 [Image credit](#fritzing): This image is from the [Fritzing](http://fritzing.org/home/) parts library.
