@@ -235,7 +235,7 @@ make savedefconfig
 ```/bin/bash
 export GITHUB_TOKEN=62886b1e475cf9d39c670a109e0ea29cceca9641
 export USERNAME=laibulle
-export REPO=excrement_system_rpi3
+export REPO=drew_box_system_rpi3
 
 ./build.sh
 ```

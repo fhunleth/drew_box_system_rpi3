@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         USERNAME = 'laibulle'
-        REPO = 'excrement_system_rpi3'
+        REPO = 'drew_box_system_rpi3'
     }
 
     stages {
