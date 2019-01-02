@@ -226,7 +226,13 @@ configuration found here, do the following (this is somewhat tedious):
 
 ### Build
 
+```/bin/bash
+mix nerves.system.shell
+make m
+make savedefconfig
 ```
+
+```/bin/bash
 export GITHUB_TOKEN=62886b1e475cf9d39c670a109e0ea29cceca9641
 export USERNAME=laibulle
 export REPO=excrement_system_rpi3
