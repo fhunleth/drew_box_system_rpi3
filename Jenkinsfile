@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh "whoami"
                 sh "chmod +x build.sh"
                 sh './build.sh'
             }
