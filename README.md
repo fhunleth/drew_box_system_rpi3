@@ -227,12 +227,12 @@ configuration found here, do the following (this is somewhat tedious):
 ### Build
 
 ```
-export VERSION=0.1.0
+export VERSION=0.1.1
 export GITHUB_TOKEN=62886b1e475cf9d39c670a109e0ea29cceca9641
 export USERNAME=laibulle
 export REPO=excrement_system_rpi3
 
-echo echo "$VERSION" > file
+echo "$VERSION" > VERSION
 mix nerves.artifact
 
 export CHECKSUM=$(cat .nerves/artifacts/$REPO-portable-$VERSION/CHECKSUM)
