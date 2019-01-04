@@ -2,3 +2,25 @@
 #
 # If these are non-proprietary, please consider contributing them back to
 # Nerves or Buildroot.
+
+config BR2_PACKAGE_GOLIGHTS
+    bool "golights"
+    depends on BR2_PACKAGE_OPENCV3
+    depends on BR2_PACKAGE_OPENCV3_LIB_SHAPE
+    depends on BR2_PACKAGE_OPENCV3_LIB_SUPERRES
+    depends on BR2_PACKAGE_OPENCV3_LIB_TS
+    depends on BR2_PACKAGE_OPENCV3_LIB_VIDEOSTAB
+    depends on BR2_PACKAGE_OPENCV3_WITH_FFMPEG
+    depends on BR2_PACKAGE_OPENCV3_WITH_JASPER
+    depends on BR2_PACKAGE_OPENCV3_WITH_JPEG
+    depends on BR2_PACKAGE_OPENCV3_WITH_PNG
+    depends on BR2_PACKAGE_OPENCV3_WITH_PNG
+    depends on BR2_PACKAGE_OPENCV3_WITH_TIFF
+    depends on BR2_PACKAGE_OPENCV3_WITH_V4L
+    depends on BR2_PACKAGE_LIRC_TOOLS
+    depends on BR2_PACKAGE_HOST_GO_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_HOST_GO_CGO_LINKING_SUPPORTS
+    depends on BR2_TOOLCHAIN_HAS_THREADS
+    help
+      Golight program
+      see http://helloworld.com for more on this software
